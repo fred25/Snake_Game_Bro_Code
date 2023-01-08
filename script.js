@@ -7,7 +7,7 @@ const gameWidth = gameBoard.width;
 const gameHeight = gameBoard.height;
 
 const boardBackground = "white";
-const snakeColor = "lightgreen";
+let snakeColor = 255;
 const snakeBorder = "black";
 const foodColor = "red";
 
@@ -106,12 +106,16 @@ function moveSnake() {
 }
 
 function drawSnake() {
-    ctx.fillStyle = snakeColor;
     ctx.strokeStyle = snakeBorder;
     snake.forEach((snakePart) => {
+        ctx.fillStyle = "rgb(0, " + snakeColor + ",0)";
         ctx.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
         ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
+        snakeColor <= 0
+            ? (snakeColor = 255)
+            : (snakeColor -= 255 - 20 / snake.length + 20);
     });
+    snakeColor = 255;
 }
 
 function changeDirection(event) {
