@@ -111,9 +111,7 @@ function drawSnake() {
         ctx.fillStyle = "rgb(0, " + snakeColor + ",0)";
         ctx.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
         ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
-        snakeColor <= 0
-            ? (snakeColor = 255)
-            : (snakeColor -= 255 - 20 / snake.length + 20);
+        snakeColor -= 255 / snake.length;
     });
     snakeColor = 255;
 }
